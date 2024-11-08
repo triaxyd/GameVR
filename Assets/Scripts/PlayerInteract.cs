@@ -12,7 +12,7 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             // interaction range
-            float interactRange = 2f;
+            float interactRange = 1.5f;
 
 
             // collider array of near colliders
@@ -20,7 +20,9 @@ public class PlayerInteract : MonoBehaviour
 
             foreach (Collider collider in nearColliders)
             {
-                Debug.Log(collider);
+                if (collider.TryGetComponent(out NPCInteractable npcIneractable)) {
+                    npcIneractable.Interact();
+                }
             }
         }
               
