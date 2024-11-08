@@ -1,0 +1,4 @@
+repository "GameVR@triaxyd@cloud"
+  path "/"
+    br "/main"
+    co "/main"
