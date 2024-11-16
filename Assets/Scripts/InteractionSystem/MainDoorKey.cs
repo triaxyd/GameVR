@@ -21,6 +21,8 @@ public class MainDoorKey : MonoBehaviour, IInteractable
         // Hide the Key
         gameObject.SetActive(false);
 
+        Debug.Log("Got the door key");
+
         return true;
     }
 
