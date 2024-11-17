@@ -38,9 +38,17 @@ public class Interactor : MonoBehaviour
             // Interact if not null and pass the player as argument
             if (_interactable != null)
             {
+                // Set up and display the Interaction box above our player
                 if (!_interactionPromptUI.isDisplayed) _interactionPromptUI.SetUp(_interactable.InteractionPrompt);
 
-                if (Keyboard.current.eKey.wasPressedThisFrame) _interactable.Interact(this);
+                if (Keyboard.current.eKey.wasPressedThisFrame)
+                {
+                    if (_interactable.Interact(this))
+                    {
+                        // Refresh the prompt after interaction
+                        _interactionPromptUI.SetUp(_interactable.InteractionPrompt);
+                    }
+                }
             }
         }
         else
