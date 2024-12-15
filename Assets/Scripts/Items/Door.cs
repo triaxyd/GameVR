@@ -6,11 +6,15 @@ using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _promptWithoutKey = "No key found";
-    [SerializeField] private string _promptWithKey = "Press [E] to open";
-    private bool isClosed = true;
+    [SerializeField] private string promptWithoutKey = "No key found";
+
+    [SerializeField] private string promptWithKey = "Press [E] to open";
 
     [SerializeField] private GameObject houseDoorCollider;
+
+    private AudioSource doorAudioSource;
+
+    private bool isClosed = true;
 
     public string InteractionPrompt
     {
@@ -18,7 +22,8 @@ public class Door : MonoBehaviour, IInteractable
         {
             if (!isClosed)
             {
-                return ""; // No prompt if the door is already open
+                // No prompt if the door is already open
+                return ""; 
             }
             // Check if the interactor (player) has the key
             var interactor = FindObjectOfType<Interactor>();
@@ -26,11 +31,11 @@ public class Door : MonoBehaviour, IInteractable
 
             if (inventory != null && inventory.hasMainDoorKey)
             {
-                return _promptWithKey;
+                return promptWithKey;
             }
             else
             {
-                return _promptWithoutKey;
+                return promptWithoutKey;
             }
         }
     }
@@ -63,6 +68,13 @@ public class Door : MonoBehaviour, IInteractable
 
     private void OpenDoor()
     {
+        doorAudioSource = GetComponent<AudioSource>();
+        // Play the door opening sound
+        if (doorAudioSource != null && !doorAudioSource.isPlaying)
+        {
+            doorAudioSource.Play();
+        }
+
         // Target rotation: Y-axis from -180 to -80
         Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, -80, transform.rotation.eulerAngles.z);
 
