@@ -7,7 +7,7 @@ public class ShopKeeperShy : NPCBase
     {
         get
         {
-            return completedTask ? "Thanks for the pumpkin" : "Can you find my pumpkin? I think i lost it near the river...Press [E] to give item";
+            return completedTask ? "Thanks for the pumpkin" : "Press [E] to talk";
         }
     }
 
