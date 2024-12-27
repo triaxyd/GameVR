@@ -8,7 +8,7 @@ public class Door : MonoBehaviour, IInteractable
 {
     [SerializeField] private string promptWithoutKey = "No key found";
 
-    [SerializeField] private string promptWithKey = "Press [E] to open";
+    [SerializeField] private string promptWithKey = "Press [E] to open door";
 
     [SerializeField] private GameObject houseDoorCollider;
 
