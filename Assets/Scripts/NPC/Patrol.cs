@@ -36,11 +36,11 @@ public class Patrol : MonoBehaviour
         // Set flag to indicate that we are waiting
         isWaiting = true;
         // Wait for a random time
-        float waitTime = Random.Range(1f, 2f);
+        float waitTime = Random.Range(3f, 10f);
         // Go into house and then go again
         if (currentWaypoint == 2)  
         {
-            waitTime = Random.Range(5f, 10f); 
+            waitTime = Random.Range(10f, 25f); 
         }
         yield return new WaitForSeconds(waitTime);
         GoToNextWaypoint(); // Move to the next waypoint after waiting
