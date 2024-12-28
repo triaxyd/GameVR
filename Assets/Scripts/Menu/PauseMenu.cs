@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = false;
+        AudioListener.pause = false;
     }
 
     
@@ -79,6 +80,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
+        AudioListener.pause = false;
     }
 
     public void QuitGame() 
